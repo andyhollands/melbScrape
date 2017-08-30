@@ -28,7 +28,7 @@ types.each do |proptype|
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
     agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
-    pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s
+    pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s.gsub('K','000')
     low = ''
     high = ''
     lat = @lats[i]
@@ -38,8 +38,11 @@ types.each do |proptype|
       if price.include? "-"
           low = price.partition('-').first
           high = price.partition('-').last
+      elsif price.include? "to"
+          low = price.partition('to').first
+          high = price.partition('to').last
       else
-          high = price
+          high = price.gsub(/\D/, '')
       end
     elsif page2.at('div:nth-child(1) > p.statement-of-information__data-point-value')
          low = page2.at('div:nth-child(1) > p.statement-of-information__data-point-value').inner_text.strip.delete! '$ ,'
@@ -87,7 +90,7 @@ types.each do |proptype|
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
     agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
-    pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s
+    pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s.gsub('K','000')
     low = ''
     high = ''
     lat = @lats[i]
@@ -97,8 +100,11 @@ types.each do |proptype|
       if price.include? "-"
           low = price.partition('-').first
           high = price.partition('-').last
+      elsif price.include? "to"
+          low = price.partition('to').first
+          high = price.partition('to').last
       else
-          high = price
+          high = price.gsub(/\D/, '')
       end
     elsif page2.at('div:nth-child(1) > p.statement-of-information__data-point-value')
          low = page2.at('div:nth-child(1) > p.statement-of-information__data-point-value').inner_text.strip.delete! '$ ,'
