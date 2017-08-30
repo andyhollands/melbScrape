@@ -60,14 +60,13 @@ types.each do |proptype|
        long: long,
        link: li
      }   
-      p house 
     ScraperWiki.save_sqlite([:address], house)
      i += 1
   end
      
      pageurl = 2
-    
- while pageurl <= 5 do
+     
+ while pageurl <= 25 do
     url = urlbase + proptype + filter + "&page=" +  pageurl.to_s
     p "page " +  pageurl.to_s
     page = agent.get(url)
@@ -119,8 +118,7 @@ types.each do |proptype|
        lat: lat,
        long: long,
        link: li
-     }   
-      p house 
+     }    
       ScraperWiki.save_sqlite([:address], house)
      i += 1
   end
