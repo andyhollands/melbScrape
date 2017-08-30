@@ -41,6 +41,9 @@ types.each do |proptype|
       elsif price.include? "to"
           low = price.partition('to').first
           high = price.partition('to').last
+      elsif price.gsub(/\D/, '').length == 12
+        low = url[0..5]
+        high = url[6..12]
       else
           high = price.gsub(/\D/, '')
       end
@@ -103,6 +106,9 @@ types.each do |proptype|
       elsif price.include? "to"
           low = price.partition('to').first
           high = price.partition('to').last
+      elsif price.gsub(/\D/, '').length == 12
+        low = url[0..5]
+        high = url[6..12]
       else
           high = price.gsub(/\D/, '')
       end
