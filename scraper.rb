@@ -27,7 +27,7 @@ types.each do |proptype|
     beds = page2.at('.listing-features.alt > span:nth-child(1) > span.copy > em').inner_text.strip
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
-    agents = page2.at('#propertyStoryPartial > div > div > div > a:nth-child(3)').inner_text.strip
+    agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
     pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s
     low = ''
     high = ''
@@ -87,7 +87,7 @@ types.each do |proptype|
     beds = page2.at('.listing-features.alt > span:nth-child(1) > span.copy > em').inner_text.strip
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
-    agents = page2.at('#propertyStoryPartial > div > div > div > a:nth-child(3)').inner_text.strip
+    agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
     pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s
     low = ''
     high = ''
