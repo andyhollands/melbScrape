@@ -2,10 +2,15 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-west-vic-3055,coburg-north-vic-3058,coburg-vic-3058,pascoe-vale-south-vic-3044&ptype=house,villa,town-house,semi-detached,terrace,duplex,new-home-designs,new-house-land&bedrooms=2-any&price=any-900000'
+urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-west-vic-3055,coburg-north-vic-3058,coburg-vic-3058,pascoe-vale-south-vic-3044,brunswick-east-vic-3057,preston-vic-3072,thornbury-vic-3071,pascoe-vale-vic-3044,moonee-ponds-vic-3039,northcote-vic-3070&ptype='
+filter = '&price=any-1500000&sort=dateupdated-desc'
 
+types = ['house','villa','town-house','semi-detached','terrace','duplex','new-home-designs','new-house-land']
+
+types.each do |proptype|
+    
   p "page 1"
-  page = agent.get(urlbase)
+  page = agent.get(urlbase + proptype + filter)
   
   @propertyurls = Array.new
   @lats = Array.new
@@ -44,6 +49,7 @@ urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-w
     end
      house = {
        address: address,
+       propertytype: proptype,
        beds: beds,
        baths: baths,
        cars: cars,
@@ -55,14 +61,14 @@ urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-w
        link: li
      }   
       p house 
-      ScraperWiki.save_sqlite([:address], house)
+    ScraperWiki.save_sqlite([:address], house)
      i += 1
   end
      
      pageurl = 2
     
  while pageurl <= 5 do
-    url = urlbase + "&page=" +  pageurl.to_s
+    url = urlbase + proptype + filter + "&page=" +  pageurl.to_s
     p "page " +  pageurl.to_s
     page = agent.get(url)
     @propertyurls.clear
@@ -103,6 +109,7 @@ urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-w
     end
      house = {
        address: address,
+       propertytype: proptype,
        beds: beds,
        baths: baths,
        cars: cars,
@@ -114,8 +121,9 @@ urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-w
        link: li
      }   
       p house 
-     ScraperWiki.save_sqlite([:address], house)
+      ScraperWiki.save_sqlite([:address], house)
      i += 1
   end
   pageurl += 1
+  end
   end
