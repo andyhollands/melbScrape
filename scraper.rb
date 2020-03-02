@@ -14,8 +14,7 @@ agent.verify_mode = 'SSLv3';
 
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
-
-types = ['house','villa','town-house','semi-detached','terrace','duplex','new-home-designs','new-house-land']
+types = ['apartment']
 
 types.each do |proptype|
     
