@@ -1,5 +1,6 @@
 require 'mechanize'
 require 'scraperwiki'
+ScraperWiki.save_sqlite([:address], house)
 
 Mechanize.new{|a| a.ssl_version, a.verify_mode = 'SSLv3', OpenSSL::SSL::VERIFY_NONE};
 agent.user_agent_alias = 'Mac Safari'
