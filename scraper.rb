@@ -1,6 +1,11 @@
 require 'mechanize'
 require 'scraperwiki'
-agent = Mechanize.new{|a| OpenSSL::SSL::VERIFY_NONE}
+agent = Mechanize.new
+agent.ignore_bad_chunking = true
+    agent.verify_mode = OpenSSL::SSL::VERIFY_NONE 
+    agent.request_headers = { "Accept-Encoding" => ""}
+    agent.follow_meta_refresh = true
+    agent.keep_alive = false
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
 
