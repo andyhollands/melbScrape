@@ -2,6 +2,15 @@ require 'mechanize'
 require 'scraperwiki'
 agent = Mechanize.new
 agent.user_agent_alias = 'Mac Safari'
+all_response_code = ['403', '404', '502']
+
+rescue Mechanize::ResponseCodeError => e
+  if all_response_code.include? response_code 
+    e.skip
+    sleep 5
+  else
+    retry
+  end
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
 
