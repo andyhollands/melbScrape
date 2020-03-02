@@ -6,7 +6,7 @@ agent.ignore_bad_chunking = true
     agent.request_headers = { "Accept-Encoding" => ""}
     agent.follow_meta_refresh = true
     agent.keep_alive = false
-agent.user_agent_alias = 'Mac Safari'; 
+agent.user_agent_alias = 'Windows IE 9'; 
 agent.robots = false; 
 agent.ssl_version; 
 agent.verify_mode = 'SSLv3'; 
