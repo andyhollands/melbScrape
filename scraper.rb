@@ -16,14 +16,7 @@ types = ['house','villa','town-house','semi-detached','terrace','duplex','new-ho
 types.each do |proptype|
     
   p "page 1"
-    all_response_code = ['403', '404', '502']
-    rescue Mechanize::ResponseCodeError => e
-  if all_response_code.include? response_code 
-    e.skip
-    sleep 5
-  else
-    retry
-  end
+    
   page = agent.get(urlbase + proptype + filter)
     
   
@@ -150,5 +143,13 @@ types.each do |proptype|
      i += 1
   end
   pageurl += 1
+     all_response_code = ['403', '404', '502']
+    rescue Mechanize::ResponseCodeError => e
+  if all_response_code.include? response_code 
+    e.skip
+    sleep 5
+  else
+    retry
+  end
   end
   end
