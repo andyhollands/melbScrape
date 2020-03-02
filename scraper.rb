@@ -6,14 +6,7 @@ agent.ignore_bad_chunking = true
     agent.request_headers = { "Accept-Encoding" => ""}
     agent.follow_meta_refresh = true
     agent.keep_alive = false
-all_response_code = ['403', '404', '502']
-rescue Mechanize::ResponseCodeError => e
-  if all_response_code.include? response_code 
-    e.skip
-    sleep 5
-  else
-    retry
-  end
+
 
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
@@ -23,7 +16,16 @@ types = ['house','villa','town-house','semi-detached','terrace','duplex','new-ho
 types.each do |proptype|
     
   p "page 1"
+    all_response_code = ['403', '404', '502']
+    rescue Mechanize::ResponseCodeError => e
+  if all_response_code.include? response_code 
+    e.skip
+    sleep 5
+  else
+    retry
+  end
   page = agent.get(urlbase + proptype + filter)
+    
   
   @propertyurls = Array.new
   @lats = Array.new
