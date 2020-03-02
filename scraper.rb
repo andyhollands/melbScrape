@@ -1,6 +1,19 @@
 require 'mechanize'
 require 'scraperwiki'
-ScraperWiki.save_sqlite([:address], house)
+  house = {
+       address: address,
+       propertytype: proptype,
+       beds: beds,
+       baths: baths,
+       cars: cars,
+       agent: agents,
+       lowprice: low,
+       highprice: high,
+       lat: lat,
+       long: long,
+       link: li
+     }   
+    ScraperWiki.save_sqlite([:address], house)
 
 Mechanize.new{|a| a.ssl_version, a.verify_mode = 'SSLv3', OpenSSL::SSL::VERIFY_NONE};
 agent.user_agent_alias = 'Mac Safari'
