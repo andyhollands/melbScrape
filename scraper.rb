@@ -1,6 +1,6 @@
 require 'mechanize'
 require 'scraperwiki'
-agent = Mechanize.new{|a| a.ssl_version, a.verify_mode = 'SSLv3', OpenSSL::SSL::VERIFY_NONE};
+agent = Mechanize.new
 agent.user_agent_alias = 'Mac Safari'
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
