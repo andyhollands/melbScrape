@@ -2,7 +2,7 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-urlbase = 'https://www.domain.com.au/sale/?suburb=brunswick-vic-3056,brunswick-west-vic-3055,coburg-north-vic-3058,coburg-vic-3058,pascoe-vale-south-vic-3044,brunswick-east-vic-3057,preston-vic-3072,thornbury-vic-3071,pascoe-vale-vic-3044,moonee-ponds-vic-3039,northcote-vic-3070&ptype='
+urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
 filter = '&price=any-1500000&sort=dateupdated-desc'
 
 types = ['house','villa','town-house','semi-detached','terrace','duplex','new-home-designs','new-house-land']
