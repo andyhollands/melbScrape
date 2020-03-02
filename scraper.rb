@@ -6,6 +6,11 @@ agent.ignore_bad_chunking = true
     agent.request_headers = { "Accept-Encoding" => ""}
     agent.follow_meta_refresh = true
     agent.keep_alive = false
+agent.log = logger; 
+agent.user_agent_alias = 'Mac Safari'; 
+agent.robots = false; 
+agent.ssl_version; 
+agent.verify_mode = 'SSLv3'; 
 
 
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
