@@ -23,8 +23,8 @@ types.each do |proptype|
     
   
   @propertyurls = Array.new
-  @lats = Array.new
-  @longs = Array.new
+ # @lats = Array.new
+  #@longs = Array.new
   page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     @propertyurls << li.at('.listing-result__left > a').attributes['href'].value
 #@lats << li.at('a div meta:nth-child(1)').attributes['content'].value
