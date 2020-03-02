@@ -12,15 +12,15 @@ agent.ssl_version;
 agent.verify_mode = 'SSLv3'; 
 
 
-urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype='
-filter = '&price=any-1500000&sort=dateupdated-desc'
-types = ['apartment']
+urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype=apartment&price=any-1500000&sort=dateupdated-desc'
+filter = ''
+types = ['']
 
 types.each do |proptype|
     
   p "page 1"
     
-  page = agent.get(urlbase + proptype + filter)
+  page = agent.get(urlbase)
     
   
   @propertyurls = Array.new
