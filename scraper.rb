@@ -11,6 +11,18 @@ agent.robots = false;
 agent.ssl_version; 
 agent.verify_mode = 'SSLv3'; 
 
+ 
+      ScraperWiki.save_sqlite([:address],  address:'',
+       propertytype: '',
+       beds: '',
+       baths: '',
+       cars: '',
+       agent: '',
+       lowprice: '',
+       highprice: '',
+       lat: '',
+       long: '',
+       link:'')
 
 urlbase = 'https://www.domain.com.au/sale/?suburb=melbourne-vic-3000&ptype=apartment&price=any-1500000&sort=dateupdated-desc'
 filter = ''
