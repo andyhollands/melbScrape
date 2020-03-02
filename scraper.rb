@@ -2,7 +2,7 @@ require 'mechanize'
 require 'scraperwiki'
 ScraperWiki.save_sqlite([:address], { address="address",
        propertytype="proptype",
-       beds="beds",       baths: baths,
+       beds="beds",       baths="baths",
        cars="cars",
        agent="agents",
        lowprice="low",
