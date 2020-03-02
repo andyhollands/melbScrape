@@ -27,8 +27,8 @@ types.each do |proptype|
   @longs = Array.new
   page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     @propertyurls << li.at('.listing-result__left > a').attributes['href'].value
-    @lats << li.at('a div meta:nth-child(1)').attributes['content'].value
-    @longs << li.at('a div meta:nth-child(2)').attributes['content'].value
+#@lats << li.at('a div meta:nth-child(1)').attributes['content'].value
+  #@longs << li.at('a div meta:nth-child(2)').attributes['content'].value
   end
   i = 0
   @propertyurls.each do |li|
@@ -37,12 +37,12 @@ types.each do |proptype|
     beds = page2.at('.listing-features.alt > span:nth-child(1) > span.copy > em').inner_text.strip
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
-    agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
+    #agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
     pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s.gsub('K','000')
     low = ''
     high = ''
-    lat = @lats[i]
-    long = @longs[i]
+    #lat = @lats[i]
+    #long = @longs[i]
     if pricetest.start_with? '$'
       price = pricetest.delete! '$ ,'
       if price.include? "-"
@@ -69,11 +69,11 @@ types.each do |proptype|
        beds: beds,
        baths: baths,
        cars: cars,
-       agent: agents,
+       #agent: agents,
        lowprice: low,
        highprice: high,
-       lat: lat,
-       long: long,
+       #lat: lat,
+       #long: long,
        link: li
      }   
     ScraperWiki.save_sqlite([:address], house)
@@ -87,8 +87,8 @@ types.each do |proptype|
     p "page " +  pageurl.to_s
     page = agent.get(url)
     @propertyurls.clear
-    @lats.clear
-    @longs.clear
+    #@lats.clear
+    #@longs.clear
     
     page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     @propertyurls << li.at('.listing-result__left > a').attributes['href'].value
@@ -102,12 +102,12 @@ types.each do |proptype|
     beds = page2.at('.listing-features.alt > span:nth-child(1) > span.copy > em').inner_text.strip
     baths = page2.at('.listing-features.alt > span:nth-child(2) > span.copy > em').inner_text.strip
     cars = page2.at('.listing-features.alt > span:nth-child(3) > span.copy > em').inner_text.strip
-    agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
+    #agents = page2.at('#propertyStoryPartial > div > div > div').text.strip.partition('For more information on this property, contact ').last
     pricetest = page2.at('#main > div > header > div > div.left-wrap > span').inner_text.strip.to_s.gsub('K','000')
     low = ''
     high = ''
-    lat = @lats[i]
-    long = @longs[i]
+    #lat = @lats[i]
+    #long = @longs[i]
     if pricetest.start_with? '$'
       price = pricetest.delete! '$ ,'
       if price.include? "-"
@@ -134,11 +134,11 @@ types.each do |proptype|
        beds: beds,
        baths: baths,
        cars: cars,
-       agent: agents,
+       #agent: agents,
        lowprice: low,
        highprice: high,
-       lat: lat,
-       long: long,
+      # lat: lat,
+      # long: long,
        link: li
      }    
       ScraperWiki.save_sqlite([:address], house)
